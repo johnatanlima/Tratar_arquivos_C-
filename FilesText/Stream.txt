@@ -1,20 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml;
-
-namespace FilesText
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            List<string> nomes = new List<string>();
+﻿ List<string> nomes = new List<string>();
             List<string> sobrenome = new List<string>();
 
 
@@ -35,8 +19,3 @@ namespace FilesText
             {
                 Console.WriteLine($" Nome: { nomes[i] } Sobrenome: {sobrenome[i]}" );
             }
-        
-        }
-
-    }
-}

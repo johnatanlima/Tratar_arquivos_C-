@@ -1,0 +1,32 @@
+﻿   //TRABALHANDO COM ENUMERAÇÕES
+            Console.WriteLine(" \t --- TRABALHANDO COM ENUMERAÇÕES --- \n\n ");
+
+
+            Console.Write("Informe o seu tipo de cliente: (Físico) ou (Jurídico): ");
+
+            string cliente = Console.ReadLine();
+
+            TipoCliente tipo;
+
+            if(cliente.ToUpper() == "FÍSICO")
+            {
+                tipo = TipoCliente.Pessoa_Fisica;
+                Console.WriteLine($"Ok! Você é uma pessoa física! -> {tipo}");
+            }
+            else if (cliente.ToUpper() == "JURÍDICO")
+            {
+                tipo = TipoCliente.Pessoa_Juridica;
+                Console.WriteLine($"Ok! Você é uma pessoa jurídica! -> {tipo}");
+
+            }
+            else
+                Console.WriteLine("NENHUM VALOR ENCONTRADO. TENTE NOVAMENTE!");
+            
+            Console.ReadLine();
+
+        Esse enum deve deve ser declarado fora da função principal main.
+        enum TipoCliente
+        {
+            Pessoa_Fisica,
+            Pessoa_Juridica
+        }
