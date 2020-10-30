@@ -1,0 +1,28 @@
+﻿Console.WriteLine("\n MENU \n");
+            Console.WriteLine("ESCOLHA O EXEMPLO DESEJEJADO! \n");
+            Console.WriteLine(" 1) Ler o arquivo com a classe StreamReader");
+            Console.WriteLine(" 1) Fazer ");
+
+
+            List<string> nomes = new List<string>();
+            List<string> sobrenome = new List<string>();
+
+
+            using (StreamReader leitor = new StreamReader("arquivo.txt"))
+            {
+                while (!leitor.EndOfStream)
+                {
+                    string linha = leitor.ReadLine();
+
+                    string[] linhaNova = linha.Split(",");
+
+                    nomes.Add(linhaNova[0]);
+                    sobrenome.Add(linhaNova[1]);
+                }
+            }
+
+            for(int i = 0; i < nomes.Count; i++)
+            {
+                Console.WriteLine($" Nome: { nomes[i] } Sobrenome: {sobrenome[i]}" );
+            }
+        

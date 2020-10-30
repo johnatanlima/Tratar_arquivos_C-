@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Xml;
 
 namespace FilesText
@@ -14,28 +15,61 @@ namespace FilesText
     {
         static void Main(string[] args)
         {
-            List<string> nomes = new List<string>();
-            List<string> sobrenome = new List<string>();
+            //using (StreamReader leitor =)
+            //{
 
+            //}
 
-            using (StreamReader leitor = new StreamReader("arquivo.txt"))
-            {
-                while (!leitor.EndOfStream)
+            // string meu = new StreamReader(@"C:\Users\johw2\ansi.txt", Encoding.UTF8).ReadLine();
+
+            var arquivo = @"C:\Users\johw2\Desktop\Workspace .NET Core\Tratar_arquivos_CSharp\FilesText\ansi.txt";
+            string temp = @"C:\Users\johw2\Desktop\Workspace .NET Core\Tratar_arquivos_CSharp\FilesText\temp.txt";
+            
+            string resultado = "";
+            string varTemp = "";
+            
+            Encoding encoding = Encoding.Default;
+            string original = "";
+
+                using (StreamReader sr = new StreamReader(arquivo, Encoding.Default))
                 {
-                    string linha = leitor.ReadLine();
-
-                    string[] linhaNova = linha.Split(",");
-
-                    nomes.Add(linhaNova[0]);
-                    sobrenome.Add(linhaNova[1]);
+                    original = sr.ReadToEnd();
+                    encoding = sr.CurrentEncoding;
+                    sr.Close();
                 }
+
+            if (encoding == Encoding.UTF8)
+            {
+                resultado = $"É pra sair tudo funfando! { original }";
+            }
+            else
+            {
+                varTemp = File.ReadAllText(arquivo, Encoding.UTF8);
+
+                /*
+                File.WriteAllText(temp, original, Encoding.Default);
+
+                using (StreamReader sr = new StreamReader(temp, Encoding.Default))
+                {
+                    varTemp = sr.ReadToEnd();
+                    //encoding = sr.CurrentEncoding;
+                    sr.Close();
+                }
+                */
+
+                resultado = varTemp; 
+
+              //  byte[] BytesCodificados = encoding.GetBytes(original);
+                /*string BytesCodificados = encoding.GetString(original); */    
+
+                //byte[] BytesCorrigidos = Encoding.Convert(encoding, Encoding.UTF8, BytesCodificados);
+                //String BytesCorrigidos = Enconding.Convert(encoding, Encoding.UTF, strBytesCodificados)
+                
+               // resultado = Encoding.UTF8.GetString(BytesCorrigidos);
             }
 
-            for(int i = 0; i < nomes.Count; i++)
-            {
-                Console.WriteLine($" Nome: { nomes[i] } Sobrenome: {sobrenome[i]}" );
-            }
-        
+            Console.WriteLine($"\t Resolução é: { resultado }");
+
         }
 
     }
